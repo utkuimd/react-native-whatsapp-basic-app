@@ -1,12 +1,12 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 
-function App() {
+function Chats() {
   return (
     <SafeAreaView>
-      <Text>Hello Whatsapp Clone App!</Text>
+      <Text>ChatScreen</Text>
     </SafeAreaView>
   );
 }
 
-export default App;
+export default Chats;
