@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, Text, Button} from 'react-native';
+import IconFeather from 'react-native-vector-icons/Feather';
 
 function Home(props) {
   const goToChat = () => {
@@ -8,7 +9,9 @@ function Home(props) {
   return (
     <SafeAreaView>
       <Text>HomeScreen</Text>
-      <Button title="go to ChatScreen" onPress={goToChat}/>
+      <Button title="go to ChatScreen" onPress={goToChat} />
+      <IconFeather name="edit" size={30} color="blue" />
+      <IconFeather name="file" size={30} style={{transform: [{rotateX: '180deg'}]}} />
     </SafeAreaView>
   );
 }
