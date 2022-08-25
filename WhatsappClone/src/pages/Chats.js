@@ -6,18 +6,26 @@ import IconSimpleLine from 'react-native-vector-icons/SimpleLineIcons';
 function Chats() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.userDetailandCall}>
-      <IconFeather name="chevron-left" size={35} color="blue" />
+      <View style={styles.userSection}>
+      <IconFeather name="chevron-left" size={35} color="#1F51FF" />
         <View style={styles.userDetail}>
           <Image style={styles.profilePicture} source={{uri: 'https://images.unsplash.com/photo-1481214110143-ed630356e1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'}}/>
           <Text style={styles.username}>username</Text>
         </View>
         <View style={styles.callUser}>
-          <IconFeather name="video" size={30} color="blue" />
-          <IconFeather name="phone" size={30} color="blue" />
+          <IconFeather name="video" size={30} color="#1F51FF" />
+          <IconFeather name="phone" size={30} color="#1F51FF" />
         </View>
       </View>
-      <IconFeather name="file" size={30} style={{transform: [{rotateX: '180deg'}]}} />
+      <View style={styles.chatSection}></View>
+      <View style={styles.messageSection}>
+        <IconFeather name="plus" size={35} color="#1F51FF" />
+        <View style={styles.sendMessage}>
+          <IconFeather name="file" size={25} style={styles.iconGif} />
+        </View>
+        <IconFeather name="camera" size={30} color="#1F51FF" />
+        <IconSimpleLine name="microphone" size={30} color="#1F51FF" />
+      </View>
     </SafeAreaView>
   );
 }
@@ -28,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  userDetailandCall: {
+  userSection: {
     width: '100%',
     height: Dimensions.get('window').height / 12,
     flexDirection: 'row',
@@ -60,6 +68,38 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginLeft: 10,
+  },
+
+  chatSection: {
+    flex: 1,
+    backgroundColor: 'orange',
+  },
+
+  messageSection: {
+    width: '100%',
+    height: Dimensions.get('window').height / 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+
+  sendMessage: {
+    width: '50%',
+    height: 40,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#D3D3D3',
+    overflow: 'hidden',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+
+  iconGif: {
+    color: '#1F51FF',
+    transform: [{rotateX: '180deg'}],
+    marginRight: 10,
   },
 
 })
