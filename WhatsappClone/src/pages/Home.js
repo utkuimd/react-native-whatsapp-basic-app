@@ -8,8 +8,22 @@ import IconFeather from 'react-native-vector-icons/Feather';
 
 function Home(props) {
 
-  const renderChatPreview = ({item}) =>  <ChatPreview chat={item}/>
+  const renderChatPreview = ({item}) =>  <ChatPreview chat={item} gotochat={goToChat}/>
   const renderSeparator = () => <ChatSeparator />
+
+  const goToChat = (id) => {
+    chat_data.map(chat => {
+      if(chat.id === id){
+        const chatobject = {
+          firstName: chat.firstName,
+          lastName: chat.lastName,
+          profilePicture: chat.profilePictureURL,
+          messages: chat.messages,
+        }
+        props.navigation.navigate('ChatScreen', {chatObject: chatobject})
+      }
+    })
+  }
 
   return (
     <SafeAreaView style={styles.container}>

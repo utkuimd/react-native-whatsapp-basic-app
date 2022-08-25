@@ -1,7 +1,7 @@
 import React from 'react';
-import {View ,Text, Image, StyleSheet} from 'react-native';
+import {View ,Text, Image, StyleSheet, TouchableOpacity, Pressable} from 'react-native';
 
-const ChatPreview = ({chat}) => {
+const ChatPreview = ({chat, gotochat}) => {
     const lastText = chat.messages[chat.messages.length - 1].text;
     const lastDateTime = new Date(chat.messages[chat.messages.length - 1].datetime);
     const projectDate = new Date("2022-08-24T15:00:00.000Z");
@@ -20,7 +20,7 @@ const ChatPreview = ({chat}) => {
     }
     
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => gotochat(chat.id)}>
             <Image style={styles.profilePicture} source={{uri: chat.profilePictureURL}} />
             <View style={styles.body}>
                 <View>
@@ -29,7 +29,7 @@ const ChatPreview = ({chat}) => {
                 </View>
                 {handleDate()}
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
