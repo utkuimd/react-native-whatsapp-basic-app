@@ -7,10 +7,8 @@ const Message = ({message}) => {
         <View style={styles.container}>
             <View style={styles.comingMessage}>
                 <Text style={styles.messageText}>{message.text}</Text>
-                <Text style={styles.messageDate}>{date.getUTCHours()}:{date.getUTCMinutes()}</Text>
+                <Text style={message.text.length > 32 ? styles.messageDate_mutiple : styles.messageDate_single}>{date.getUTCHours()}:{date.getUTCMinutes()}</Text>
             </View>
-            <View style={styles.space}></View>
-            
         </View>
     )
 }
@@ -27,24 +25,27 @@ const styles = StyleSheet.create({
     comingMessage: {
         backgroundColor: 'white',
         borderRadius: 15,
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingLeft: 10,
+        paddingRight: 10,
         paddingTop: 7,
         paddingBottom: 5,
+        maxWidth: '80%',
         flexDirection: 'row',
-    },
-
-    space: {
-        flex: 1,
     },
 
     messageText: {
         fontSize: 18,
         color: 'black',
+        
     },
 
-    messageDate: {
+    messageDate_single: {
+        alignSelf: 'flex-end',
         marginLeft: 10,
+        marginTop: 10,
+    },
+
+    messageDate_mutiple: {
         alignSelf: 'flex-end',
         marginTop: 10,
     },

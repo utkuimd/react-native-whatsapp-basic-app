@@ -23,7 +23,7 @@ const ChatPreview = ({chat, gotochat}) => {
         <TouchableOpacity style={styles.container} onPress={() => gotochat(chat.id)}>
             <Image style={styles.profilePicture} source={{uri: chat.profilePictureURL}} />
             <View style={styles.body}>
-                <View>
+                <View style={styles.userAndText}>
                     <Text style={styles.user}>{chat.firstName} {chat.lastName}</Text>
                     <Text style={styles.lastText}>{lastText}</Text>
                 </View>
@@ -53,8 +53,12 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         marginLeft: 15,
+        justifyContent: 'space-between',
+    },
+
+    userAndText: {
+        maxWidth: '80%',
     },
 
     user: {
