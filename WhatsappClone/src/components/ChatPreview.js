@@ -1,80 +1,110 @@
 import React from 'react';
-import {View ,Text, Image, StyleSheet, TouchableOpacity, Pressable} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const ChatPreview = ({chat, gotochat}) => {
-    const lastText = chat.messages[chat.messages.length - 1].text;
-    const lastDateTime = new Date(chat.messages[chat.messages.length - 1].datetime);
-    const projectDate = new Date("2022-08-24T15:00:00.000Z");
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const lastText = chat.messages[chat.messages.length - 1].text;
+  const lastDateTime = new Date(
+    chat.messages[chat.messages.length - 1].datetime,
+  );
+  const projectDate = new Date('2022-08-24T15:00:00.000Z');
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
 
-    const handleDate = () => {
-        if(projectDate.getFullYear() === lastDateTime.getFullYear() && projectDate.getMonth() === lastDateTime.getMonth() && projectDate.getDate() === lastDateTime.getDate()) {
-            return <Text style={styles.date}>{lastDateTime.getUTCHours()}:{lastDateTime.getUTCMinutes()}</Text>
-        }
-        else if(projectDate.getFullYear() === lastDateTime.getFullYear() && projectDate.getMonth() === lastDateTime.getMonth() && (projectDate.getDate() - lastDateTime.getDate()) < 7){
-            return <Text style={styles.date}>{days[lastDateTime.getUTCDay()]}</Text>
-        }
-        else {
-            return <Text style={styles.date}>{lastDateTime.getUTCDate()}.{lastDateTime.getUTCMonth() + 1}.{lastDateTime.getUTCFullYear()}</Text>
-        }
+  const handleDate = () => {
+    if (
+      projectDate.getFullYear() === lastDateTime.getFullYear() &&
+      projectDate.getMonth() === lastDateTime.getMonth() &&
+      projectDate.getDate() === lastDateTime.getDate()
+    ) {
+      return (
+        <Text style={styles.date}>
+          {lastDateTime.getUTCHours()}:{lastDateTime.getUTCMinutes()}
+        </Text>
+      );
+    } else if (
+      projectDate.getFullYear() === lastDateTime.getFullYear() &&
+      projectDate.getMonth() === lastDateTime.getMonth() &&
+      projectDate.getDate() - lastDateTime.getDate() < 7
+    ) {
+      return <Text style={styles.date}>{days[lastDateTime.getUTCDay()]}</Text>;
+    } else {
+      return (
+        <Text style={styles.date}>
+          {lastDateTime.getUTCDate()}.{lastDateTime.getUTCMonth() + 1}.
+          {lastDateTime.getUTCFullYear()}
+        </Text>
+      );
     }
-    
-    return (
-        <TouchableOpacity style={styles.container} onPress={() => gotochat(chat.id)}>
-            <Image style={styles.profilePicture} source={{uri: chat.profilePictureURL}} />
-            <View style={styles.body}>
-                <View style={styles.userAndText}>
-                    <Text style={styles.user}>{chat.firstName} {chat.lastName}</Text>
-                    <Text style={styles.lastText}>{lastText}</Text>
-                </View>
-                {handleDate()}
-            </View>
-        </TouchableOpacity>
-    )
-}
+  };
+
+  return (
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => gotochat(chat.id)}>
+      <Image
+        style={styles.profilePicture}
+        source={{uri: chat.profilePictureURL}}
+      />
+      <View style={styles.body}>
+        <View style={styles.userAndText}>
+          <Text style={styles.user}>
+            {chat.firstName} {chat.lastName}
+          </Text>
+          <Text style={styles.lastText}>{lastText}</Text>
+        </View>
+        {handleDate()}
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 10,
+  },
 
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: 10,
-        marginBottom: 10,
-    },
+  profilePicture: {
+    width: 80,
+    height: 80,
+    borderRadius: 80 / 2,
+  },
 
-    profilePicture: {
-        width: 80,
-        height: 80,
-        borderRadius: 80 / 2,
-    },
+  body: {
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 15,
+    justifyContent: 'space-between',
+  },
 
-    body: {
-        flex: 1,
-        flexDirection: 'row',
-        marginLeft: 15,
-        justifyContent: 'space-between',
-    },
+  userAndText: {
+    maxWidth: '80%',
+  },
 
-    userAndText: {
-        maxWidth: '80%',
-    },
+  user: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
+  },
 
-    user: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'black',
-    },
+  lastText: {
+    fontSize: 16,
+  },
 
-    lastText: {
-        fontSize: 16,
-    },
-
-    date:{
-        fontSize: 16,
-    }
-
-})
+  date: {
+    fontSize: 16,
+  },
+});
 
 export default ChatPreview;

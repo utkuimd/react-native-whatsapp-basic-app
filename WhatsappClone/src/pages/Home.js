@@ -10,9 +10,7 @@ function Home(props) {
   const renderChatPreview = ({item}) => (
     <ChatPreview chat={item} gotochat={goToChat} />
   );
-
   const renderSeparator = () => <ChatSeparator />;
-
   const goToChat = id => {
     chat_data.map(chat => {
       if (chat.id === id) {

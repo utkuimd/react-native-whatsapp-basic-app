@@ -1,21 +1,36 @@
 import React from 'react';
-import {SafeAreaView, Text, View, Image, StyleSheet, Dimensions, FlatList, ImageBackground} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
 import Message from '../components/Message';
 import IconFeather from 'react-native-vector-icons/Feather';
 import IconSimpleLine from 'react-native-vector-icons/SimpleLineIcons';
 
 function Chats(props) {
   const chat = props.route.params.chatObject;
-  const renderMessage = ({item}) => <Message message={item} />
-  const backgroundLink = "https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png";
+  const renderMessage = ({item}) => <Message message={item} />;
+  const backgroundLink =
+    'https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png';
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userSection}>
-      <IconFeather name="chevron-left" size={35} color="#1F51FF" />
+        <IconFeather name="chevron-left" size={35} color="#1F51FF" />
         <View style={styles.userDetail}>
-          <Image style={styles.profilePicture} source={{uri: chat.profilePicture}}/>
-          <Text style={styles.username}>{chat.firstName} {chat.lastName}</Text>
+          <Image
+            style={styles.profilePicture}
+            source={{uri: chat.profilePicture}}
+          />
+          <Text style={styles.username}>
+            {chat.firstName} {chat.lastName}
+          </Text>
         </View>
         <View style={styles.callUser}>
           <IconFeather name="video" size={30} color="#1F51FF" />
@@ -23,10 +38,13 @@ function Chats(props) {
         </View>
       </View>
       <View style={styles.chatSection}>
-        <ImageBackground style={styles.background} source={{uri: backgroundLink}}>
-          <FlatList 
+        <ImageBackground
+          style={styles.background}
+          source={{uri: backgroundLink}}>
+          <FlatList
             data={chat.messages}
             renderItem={renderMessage}
+            bounces={true}
           />
         </ImageBackground>
       </View>
@@ -43,7 +61,6 @@ function Chats(props) {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
   },
@@ -54,7 +71,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 5,
-    paddingTop: 10,
   },
 
   userDetail: {
@@ -85,12 +101,12 @@ const styles = StyleSheet.create({
 
   chatSection: {
     flex: 1,
-    paddingTop: 10,
   },
 
   background: {
     width: '100%',
     height: '100%',
+    paddingTop: 5,
   },
 
   messageSection: {
@@ -119,7 +135,6 @@ const styles = StyleSheet.create({
     transform: [{rotateX: '180deg'}],
     marginRight: 10,
   },
-
-})
+});
 
 export default Chats;
