@@ -10,6 +10,7 @@ const SearchBar = () => {
         <TextInput
           placeholder="Search..."
           placeholderTextColor={'#908f8f'}
+          // TextInput has no functionality so "onChangeText={() => null}"
           onChangeText={() => null}
           style={styles.searchInput}
         />

@@ -15,15 +15,21 @@ import IconFeather from 'react-native-vector-icons/Feather';
 import IconSimpleLine from 'react-native-vector-icons/SimpleLineIcons';
 
 function Chats(props) {
+  // Take data coming from home screen.
   const chat = props.route.params.chatObject;
+
   const renderMessage = ({item}) => <Message message={item} />;
   const backgroundLink =
     'https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png';
+
+  //Go back to previous screen.
   const goBack = () => {
     props.navigation.goBack();
   };
+
   return (
     <SafeAreaView style={styles.container}>
+      {/*Header section of chat screen*/}
       <View style={styles.userSection}>
         <TouchableOpacity onPress={goBack}>
           <IconFeather name="chevron-left" size={35} color="#1F51FF" />
@@ -42,6 +48,7 @@ function Chats(props) {
           <IconFeather name="phone" size={30} color="#1F51FF" />
         </View>
       </View>
+      {/*Body section of chat screen*/}
       <View style={styles.chatSection}>
         <ImageBackground
           style={styles.background}
@@ -51,8 +58,10 @@ function Chats(props) {
             renderItem={renderMessage}
             bounces={true}
           />
+          {/*In Flatlist, bounces property will not work on Android OS.*/}
         </ImageBackground>
       </View>
+      {/*Footer section of chat screen*/}
       <View style={styles.messageSection}>
         <IconFeather name="plus" size={35} color="#1F51FF" />
         <View style={styles.sendMessage}>

@@ -2,12 +2,16 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 const Message = ({message}) => {
+  // Transfer datetime of coming message to Date object.
   const date = new Date(message.datetime);
+
   return (
     <View style={styles.container}>
       <View style={styles.comingMessage}>
         <Text style={styles.messageText}>{message.text}</Text>
         <Text
+          // Change design of messageDate according to
+          // if the message contains multiple or single line.
           style={
             message.text.length > 32
               ? styles.messageDate_mutiple

@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   },
 
   transparent: {
-    width: 115,
+    width: 115, // 80(witdh of profilepictures in chat preview) + 20 + 15(these are spaces)
     borderWidth: 1,
-    borderColor: 'transparent',
+    borderColor: 'transparent', // This section will be invisible
   },
 
   separator: {
-    flex: 1,
+    flex: 1, // Remainder of separator will be visible
     borderWidth: 1,
     borderColor: '#dcdcdc',
   },
