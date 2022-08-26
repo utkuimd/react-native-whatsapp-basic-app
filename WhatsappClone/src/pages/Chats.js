@@ -8,6 +8,7 @@ import {
   Dimensions,
   FlatList,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import Message from '../components/Message';
 import IconFeather from 'react-native-vector-icons/Feather';
@@ -18,11 +19,15 @@ function Chats(props) {
   const renderMessage = ({item}) => <Message message={item} />;
   const backgroundLink =
     'https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png';
-
+  const goBack = () => {
+    props.navigation.goBack();
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userSection}>
-        <IconFeather name="chevron-left" size={35} color="#1F51FF" />
+        <TouchableOpacity onPress={goBack}>
+          <IconFeather name="chevron-left" size={35} color="#1F51FF" />
+        </TouchableOpacity>
         <View style={styles.userDetail}>
           <Image
             style={styles.profilePicture}
