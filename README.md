@@ -1,5 +1,5 @@
 ***PROJECT DESCRIPTION*** :<br>
-+ It is clone of the home and chat pages of whatsapp mobile app(ios).<br>
++ It is basic clone of the home and chat pages of whatsapp mobile app.<br>
 + You click any chat from chat list you will direct to chat screen,<br>
 + and you will see user's information and messages who you choose.<br>
 + To create or delete chats, you must change chat-data.json file.<br>
