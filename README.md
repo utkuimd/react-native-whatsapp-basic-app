@@ -8,7 +8,7 @@
 
 ![](assets/odev-2-gif-edited-500px.gif)
 
-***REQUİRED*** :<br>
+***REQUIRED*** :<br>
 :heavy_check_mark: Pages were connected with each other Stack Navigator.<br>
 :heavy_check_mark: When you choose any chat from chat list, you will direct to chat screen.<br>
 :heavy_check_mark: In chat screen, you will see user's information and messages who you choose.<br>
@@ -19,7 +19,7 @@
 :heavy_check_mark: Components are reusable.<br>
 :heavy_check_mark: I didn't get any errors from ESLint.<br>
 
-***OTHER NOTES*** :<br>
+***USED TECHNOLOGIES AND HOW THEY CAN INSTALL*** :<br>
 + I used "react-navigation" packet in this project. You can install this packet, as follows steps in this guide.<br>
 + https://reactnavigation.org/docs/getting-started#installation<br>
 + I used "react-native-vector-icons" packet in this project. You can install this packet, as follows steps in this guide.<br>
